@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leonida Platinum — GTA 6 Trophy Guide &amp; Tracker</title>
+<meta name="description" content="An offline guide and tracker for all 55 PlayStation 5 trophies of Grand Theft Auto VI: official names, descriptions and grades, saved progress, filters, a spoiler setting, a roadmap to the platinum and the missables flagged.">
+<link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <div class="brand">
+      <p class="eyebrow">Grand Theft Auto VI &middot; PlayStation 5</p>
+      <h1>Leonida Platinum</h1>
+      <p class="tagline">The offline trophy guide &amp; tracker for all 55 GTA 6 trophies.</p>
+    </div>
+    <div class="progress-card" id="progressCard" aria-live="polite">
+      <p class="progress-big"><span id="earnedCount">0</span><span class="progress-of">/ 55</span></p>
+      <p class="progress-label">trophies earned</p>
+      <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="55" aria-valuenow="0" id="progressBar"><span id="progressFill"></span></div>
+      <p class="progress-sub" id="progressSub">0% to the platinum</p>
+      <p class="grade-line" id="gradeLine">1 Platinum &middot; 2 Gold &middot; 6 Silver &middot; 46 Bronze</p>
+    </div>
+  </div>
+  <nav class="tabs" aria-label="Guide sections">
+    <a class="tab" href="#/checklist" data-tab="checklist">Checklist</a>
+    <a class="tab" href="#/roadmap" data-tab="roadmap">Roadmap</a>
+    <a class="tab" href="#/missables" data-tab="missables">Missables</a>
+    <a class="tab" href="#/sources" data-tab="sources">Sources</a>
+  </nav>
+</header>
+
+<main class="layout">
+  <section class="panel toolbar-panel" aria-label="Filters and progress tools">
+    <div class="toolbar-row">
+      <label class="field field-search">
+        <span class="field-label">Search</span>
+        <input id="searchInput" type="search" placeholder="Search a trophy name or description&hellip;" autocomplete="off">
+      </label>
+      <label class="field">
+        <span class="field-label">Kind</span>
+        <select id="kindFilter">
+          <option value="all">All kinds</option>
+          <option value="story">Story</option>
+          <option value="missable">Missable</option>
+          <option value="collectible">Collectibles</option>
+          <option value="activity">Activities</option>
+          <option value="side">Side strands</option>
+          <option value="crime">Crime &amp; heists</option>
+          <option value="progress">Progress &amp; money</option>
+        </select>
+      </label>
+      <label class="field">
+        <span class="field-label">Grade</span>
+        <select id="gradeFilter">
+          <option value="all">All grades</option>
+          <option value="Platinum">Platinum</option>
+          <option value="Gold">Gold</option>
+          <option value="Silver">Silver</option>
+          <option value="Bronze">Bronze</option>
+        </select>
+      </label>
+      <label class="field">
+        <span class="field-label">Status</span>
+        <select id="statusFilter">
+          <option value="all">All trophies</option>
+          <option value="earned">Earned</option>
+          <option value="remaining">Still to earn</option>
+        </select>
+      </label>
+    </div>
+    <div class="toolbar-row toolbar-row-actions">
+      <label class="spoiler-toggle">
+        <input id="spoilerToggle" type="checkbox" checked>
+        <span>Hide story spoilers until earned</span>
+      </label>
+      <span class="toolbar-spacer"></span>
+      <button class="btn" id="exportBtn" type="button">Export progress</button>
+      <button class="btn" id="importBtn" type="button">Import progress</button>
+      <input id="importFile" type="file" accept=".json,application/json" hidden>
+      <button class="btn btn-quiet" id="resetBtn" type="button">Reset</button>
+    </div>
+    <p class="filter-count" id="filterCount" aria-live="polite"></p>
+  </section>
+
+  <section class="panel list-panel" id="viewChecklist" aria-label="Trophy checklist">
+    <div class="list-head">
+      <h2>Trophy checklist</h2>
+      <p>Tick a trophy when you earn it. Progress is saved in this browser only — nothing leaves your device.</p>
+    </div>
+    <ul class="trophy-list" id="trophyList"></ul>
+  </section>
+
+  <aside class="panel detail-panel" id="viewDetail" aria-label="Trophy guide">
+    <div id="detailBody">
+      <h2>Pick a trophy</h2>
+      <p>Select any trophy in the checklist to read its guide here: what to do, where, when it can be missed, and where each fact comes from.</p>
+      <p class="detail-hint">Guides are written in our own words from the official descriptions. Anything not yet confirmed in the game says so plainly.</p>
+    </div>
+  </aside>
+
+  <section class="panel page-panel" id="viewRoadmap" aria-label="Roadmap to the platinum" hidden>
+    <h2>Roadmap to the platinum</h2>
+    <p class="page-intro">Built from the official trophy descriptions alone. The order below earns the story trophies first, protects the missables, then clears activities, collectibles and cleanup — and finishes with 100% completion.</p>
+    <div id="roadmapBody"></div>
+  </section>
+
+  <section class="panel page-panel" id="viewMissables" aria-label="Missable trophies" hidden>
+    <h2>Missable trophies</h2>
+    <p class="page-intro">One trophy is reported missable. The side strands below are not confirmed missable — but finish them before the final mission anyway, because whether they stay open afterwards is not yet confirmed in the game.</p>
+    <div id="missablesBody"></div>
+  </section>
+
+  <section class="panel page-panel" id="viewSources" aria-label="Sources and honesty note" hidden>
+    <h2>Sources &amp; honesty note</h2>
+    <p class="page-intro">Grand Theft Auto VI released on 19 November 2026. This guide was written two days later, so most of it is built from the official trophy descriptions, not from playing the game — and it says so wherever that is the case.</p>
+    <h3>Where the facts come from</h3>
+    <ul class="source-list">
+      <li><strong>Official trophy list</strong> — names, descriptions, grades and hidden flags as published on PlayStation, via <span class="source-name">Exophase</span> (exophase.com/game/grand-theft-auto-vi-psn/trophies) and cross-checked against <span class="source-name">PSNProfiles</span>.</li>
+      <li><strong>Counts and locations</strong> — <span class="source-name">PushSquare</span>, GTA 6 Trophy Guide &amp; Roadmap (42 Shooting Range challenges, 397 stunts, 14 drone races, 18 meditation spots, 8 garages and their prices).</li>
+      <li><strong>Cross-checks</strong> — <span class="source-name">Gamemapa</span> (activity types, Criminal Profile actions, the missable meditation report) and <span class="source-name">KeenGamer</span> (grade table).</li>
+    </ul>
+    <h3>What we do not claim</h3>
+    <ul class="source-list">
+      <li>Any guide step marked “not yet checked in-game” is our own advice drawn from the official description. It may be refined as players confirm the details.</li>
+      <li>Hidden flags follow the PlayStation list as published on Exophase (28 hidden of 55). If the live list differs, the flags will be corrected — the names, descriptions and grades are the official ones either way.</li>
+      <li>No Rockstar Games logo, official artwork, box art or game screenshot is used anywhere in this guide. The look is our own.</li>
+    </ul>
+    <h3>Offline &amp; private</h3>
+    <p>This guide is static files. It makes no network request at run time, stores your progress only in this browser (localStorage), and offers export and import as a file you control.</p>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p>Leonida Platinum — an unofficial, fan-made guide. Grand Theft Auto and GTA are trademarks of Take-Two Interactive; this guide is not affiliated with or endorsed by Rockstar Games. Trophy names and descriptions are shown as PlayStation publishes them.</p>
+  <p>Data: Exophase &amp; PSNProfiles (official list) · PushSquare, Gamemapa, KeenGamer (counts &amp; cross-checks). Guides are original writing. Works fully offline.</p>
+</footer>
+
+<script type="module" src="./js/main.js"></script>
+</body>
+</html>
